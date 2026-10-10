@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.15)
+project(MyGuiApp LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Поиск библиотек, которые мы только что установили глобально
+find_package(SFML COMPONENTS graphics window system REQUIRED)
+find_package(imgui REQUIRED)
+
+add_executable(MyGuiApp main.cpp)
+
+# Связываем библиотеки с вашим приложением
+target_link_libraries(MyGuiApp PRIVATE 
+    sfml-graphics 
+    sfml-window 
+    sfml-system 
+    imgui::imgui
+)
